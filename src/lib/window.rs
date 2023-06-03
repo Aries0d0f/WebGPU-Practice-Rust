@@ -216,6 +216,8 @@ pub async fn open(shader_src: &str, vertices: &[Vertex]) {
     let event_loop = EventLoop::new();
     let window = WindowBuilder::new().build(&event_loop).unwrap();
 
+    window.set_inner_size(winit::dpi::LogicalSize::new(512, 512));
+
     // State::new uses async code, so we're going to wait for it to finish
     let mut state = State::new(window, shader_src, vertices).await;
 
