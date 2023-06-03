@@ -68,15 +68,15 @@ impl State {
             .iter()
             .copied()
             .find(|f| f.describe().srgb)
-            .unwrap_or(surface_caps.formats[0]);
+            .unwrap_or(wgpu::TextureFormat::Bgra8UnormSrgb);
 
         let config = wgpu::SurfaceConfiguration {
             usage: wgpu::TextureUsages::RENDER_ATTACHMENT,
             format: surface_format,
             width: size.width,
             height: size.height,
-            present_mode: surface_caps.present_modes[0],
-            alpha_mode: surface_caps.alpha_modes[0],
+            present_mode: wgpu::PresentMode::AutoVsync,
+            alpha_mode: wgpu::CompositeAlphaMode::PostMultiplied,
             view_formats: vec![],
         };
 
