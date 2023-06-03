@@ -1,6 +1,6 @@
+use crate::lib::vertex::Vertex;
 use std::iter;
 use wgpu::util::DeviceExt;
-use crate::lib::vertex::Vertex;
 use winit::{
     event::*,
     event_loop::{ControlFlow, EventLoop},
@@ -20,7 +20,7 @@ struct State {
 }
 
 impl State {
-    async fn new(window: Window, shader_src: &str, vertices: &[Vertex] ) -> Self {
+    async fn new(window: Window, shader_src: &str, vertices: &[Vertex]) -> Self {
         let size = window.inner_size();
 
         // The instance is a handle to our GPU
@@ -97,9 +97,7 @@ impl State {
             vertex: wgpu::VertexState {
                 module: &shader,
                 entry_point: "vertex_main",
-                buffers: &[
-                    Vertex::desc(),
-                ],
+                buffers: &[Vertex::desc()],
             },
             fragment: Some(wgpu::FragmentState {
                 module: &shader,
